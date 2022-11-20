@@ -1,5 +1,5 @@
 pytest_plugins = [
-    "application.utils.factories",
-    "application.utils.selenium",
-    "application.utils.fixtures",
+    "dashboard.selenium",
+    "dashboard.fixtures.fixtures",
+    "inventory.fixtures.fixtures",
 ]
