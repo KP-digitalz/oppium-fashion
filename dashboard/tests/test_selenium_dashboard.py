@@ -1,4 +1,5 @@
 import pytest
+from decouple import config
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
@@ -14,8 +15,8 @@ def test_dashboard_admin_login(live_server, db_fixture_setup, chrome_browser_ins
     user_password = browser.find_element(By.NAME, "password")
     submit = browser.find_element(By.XPATH, "//input[@value='Log in']")
 
-    user_name.send_keys("oppium")
-    user_password.send_keys("oppium")
+    user_name.send_keys(config("TEST_USERNAME")
+    user_password.send_keys(config("TEST_PASSWORD")
     submit.send_keys(Keys.RETURN)
 
     assert "Site administration" in browser.page_source
