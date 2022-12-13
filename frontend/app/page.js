@@ -1,8 +1,11 @@
-import { Navbar } from "../components";
+import { Navbar, Footer, Newsletter, Hero } from "../components";
 
 const Page = () => (
   <div>
     <Navbar />
+    <Hero />
+    <Newsletter />
+    <Footer />
   </div>
 );
 
