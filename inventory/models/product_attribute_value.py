@@ -14,7 +14,7 @@ class ProductAttributeValue(models.Model):
         on_delete=models.PROTECT,
     )
 
-    attribute_value: str = models.CharField(
+    attribute_value = models.CharField(
         max_length=255,
         unique=False,
         null=False,
