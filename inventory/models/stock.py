@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from datetime import datetime
 from .product_inventory import ProductInventory
 
 
@@ -15,7 +14,7 @@ class Stock(models.Model):
         on_delete=models.PROTECT,
     )
 
-    last_checked: datetime = models.DateTimeField(
+    last_checked = models.DateTimeField(
         unique=False,
         null=True,
         blank=True,
@@ -23,7 +22,7 @@ class Stock(models.Model):
         help_text=_("format: Y-m-d H:M:S, null-true, blank-true"),
     )
 
-    units: int = models.IntegerField(
+    units = models.IntegerField(
         default=0,
         unique=False,
         null=False,
@@ -32,7 +31,7 @@ class Stock(models.Model):
         help_text=_("format: required, default-0"),
     )
 
-    units_sold: int = models.IntegerField(
+    units_sold = models.IntegerField(
         default=0,
         unique=False,
         null=False,
