@@ -9,7 +9,7 @@ class Category(MPTTModel):
     Inventory Category table implemented with MPTT
     """
 
-    name: str = models.CharField(
+    name = models.CharField(
         max_length=100,
         null=False,
         unique=False,
@@ -18,7 +18,7 @@ class Category(MPTTModel):
         help_text=_("format: required, max-100"),
     )
 
-    slug: str = models.SlugField(
+    slug = models.SlugField(
         max_length=100,
         null=False,
         unique=False,
@@ -29,7 +29,7 @@ class Category(MPTTModel):
 
     is_active: bool = models.BooleanField(default=False)
 
-    parent: str = TreeForeignKey(
+    parent = TreeForeignKey(
         "self",
         on_delete=models.PROTECT,
         related_name="children",

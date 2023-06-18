@@ -7,7 +7,7 @@ class ProductAttribute(models.Model):
     Product attribute table
     """
 
-    name: str = models.CharField(
+    name = models.CharField(
         max_length=255,
         unique=True,
         null=False,
@@ -16,7 +16,7 @@ class ProductAttribute(models.Model):
         help_text=_("format: required, unique, max-255"),
     )
 
-    description: str = models.TextField(
+    description = models.TextField(
         unique=False,
         null=False,
         blank=False,

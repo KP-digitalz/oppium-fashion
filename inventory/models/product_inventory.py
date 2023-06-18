@@ -1,10 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from datetime import datetime
-from .product import Product
-from .product_type import ProductType
+
 from .brand import Brand
+from .product import Product
 from .product_attribute_value import ProductAttributeValue
+from .product_type import ProductType
 
 
 class ProductInventory(models.Model):
@@ -12,7 +12,7 @@ class ProductInventory(models.Model):
     Product inventory table
     """
 
-    sku: str = models.CharField(
+    sku = models.CharField(
         max_length=20,
         unique=True,
         null=False,
@@ -21,7 +21,7 @@ class ProductInventory(models.Model):
         help_text=_("format: required, unique, max-20"),
     )
 
-    upc: str = models.CharField(
+    upc = models.CharField(
         max_length=12,
         unique=True,
         null=False,
@@ -30,13 +30,9 @@ class ProductInventory(models.Model):
         help_text=_("format: required, unique, max-12"),
     )
 
-    product_type = models.ForeignKey(
-        ProductType, related_name="product_type", on_delete=models.PROTECT
-    )
+    product_type = models.ForeignKey(ProductType, related_name="product_type", on_delete=models.PROTECT)
 
-    product = models.ForeignKey(
-        Product, related_name="product", on_delete=models.PROTECT
-    )
+    product = models.ForeignKey(Product, related_name="product", on_delete=models.PROTECT)
 
     brand = models.ForeignKey(Brand, related_name="brand", on_delete=models.PROTECT)
 
@@ -46,13 +42,13 @@ class ProductInventory(models.Model):
         through="ProductAttributeValues",
     )
 
-    is_active: bool = models.BooleanField(
+    is_active = models.BooleanField(
         default=False,
         verbose_name=_("Product visibility"),
         help_text=_("format: true = product visible"),
     )
 
-    retail_price: float = models.DecimalField(
+    retail_price = models.DecimalField(
         max_digits=5,
         decimal_places=2,
         unique=False,
@@ -67,7 +63,7 @@ class ProductInventory(models.Model):
         },
     )
 
-    store_price: float = models.DecimalField(
+    store_price = models.DecimalField(
         max_digits=5,
         decimal_places=2,
         unique=False,
@@ -82,7 +78,7 @@ class ProductInventory(models.Model):
         },
     )
 
-    sale_price: float = models.DecimalField(
+    sale_price = models.DecimalField(
         max_digits=5,
         decimal_places=2,
         unique=False,
@@ -97,21 +93,21 @@ class ProductInventory(models.Model):
         },
     )
 
-    weight: float = models.FloatField(
+    weight = models.FloatField(
         unique=False,
         null=False,
         blank=False,
         verbose_name=_("Product weight"),
     )
 
-    created_at: datetime = models.DateTimeField(
+    created_at = models.DateTimeField(
         auto_now_add=True,
         editable=False,
         verbose_name=_("Date sub-product created"),
         help_text=_("format: Y-m-d H:M:S"),
     )
 
-    updated_at: datetime = models.DateTimeField(
+    updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name=_("Date sub-product updated"),
         help_text=_("format: Y-m-d H:M:S"),

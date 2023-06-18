@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from mptt.models import TreeManyToManyField
-from datetime import datetime
+
 from .category import Category
 
 
@@ -10,7 +10,7 @@ class Product(models.Model):
     Product details table
     """
 
-    web_id: str = models.CharField(
+    web_id = models.CharField(
         max_length=50,
         unique=True,
         null=False,
@@ -19,7 +19,7 @@ class Product(models.Model):
         help_text=_("format: required, unique"),
     )
 
-    slug: str = models.CharField(
+    slug = models.CharField(
         max_length=110,
         unique=False,
         null=False,
@@ -28,7 +28,7 @@ class Product(models.Model):
         help_text=_("format: required, letters, numbers, underscore or hyphens"),
     )
 
-    name: str = models.CharField(
+    name = models.CharField(
         max_length=110,
         unique=False,
         null=False,
@@ -37,7 +37,7 @@ class Product(models.Model):
         help_text=_("format: required, max-110"),
     )
 
-    description: str = models.TextField(
+    description = models.TextField(
         unique=False,
         null=False,
         blank=False,
@@ -45,7 +45,7 @@ class Product(models.Model):
         help_text=_("format: required"),
     )
 
-    is_active: bool = models.BooleanField(
+    is_active = models.BooleanField(
         unique=False,
         null=False,
         blank=False,
@@ -54,14 +54,14 @@ class Product(models.Model):
         help_text=_("format: true = product visible"),
     )
 
-    created_at: datetime = models.DateTimeField(
+    created_at = models.DateTimeField(
         auto_now_add=True,
         editable=False,
         verbose_name=_("Time of publishing the product"),
         help_text=_("format: Y-m-d H:M:S"),
     )
 
-    updated_at: datetime = models.DateTimeField(
+    updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name=_("Last time the product has been updated at"),
         help_text=_("format: Y-m-d H:M:S"),

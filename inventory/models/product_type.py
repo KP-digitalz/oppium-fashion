@@ -7,7 +7,7 @@ class ProductType(models.Model):
     Product type table
     """
 
-    name: str = models.CharField(
+    name = models.CharField(
         max_length=255,
         unique=True,
         null=False,

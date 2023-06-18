@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from datetime import datetime
+
 from .product_inventory import ProductInventory
 
 
@@ -25,7 +25,7 @@ class Media(models.Model):
         help_text=_("format: required, default-default.png"),
     )
 
-    alt_text: str = models.CharField(
+    alt_text = models.CharField(
         max_length=255,
         unique=False,
         null=False,
@@ -34,20 +34,20 @@ class Media(models.Model):
         help_text=_("format: required, max-255"),
     )
 
-    is_feature: bool = models.BooleanField(
+    is_feature = models.BooleanField(
         default=True,
         verbose_name=_("Product default image"),
         help_text=_("format: default=false, true=default image"),
     )
 
-    created_at: datetime = models.DateTimeField(
+    created_at = models.DateTimeField(
         auto_now_add=True,
         editable=False,
         verbose_name=_("Product visibility"),
         help_text=_("format: Y-m-d H:M:S"),
     )
 
-    updated_at: datetime = models.DateTimeField(
+    updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name=_("Date sub-product created"),
         help_text=_("format: Y-m-d H:M:S"),

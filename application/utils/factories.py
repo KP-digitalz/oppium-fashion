@@ -1,25 +1,28 @@
 import os
+
 import django
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "application.settings")
 
 django.setup()
 
+from datetime import datetime
+
 import factory
 from faker import Faker
 from pytest_factoryboy import register
-from datetime import datetime
+
 from inventory.models import (
-    Category,
-    Product,
-    ProductInventory,
-    ProductType,
     Brand,
+    Category,
     Media,
-    Stock,
+    Product,
     ProductAttribute,
     ProductAttributeValue,
     ProductAttributeValues,
+    ProductInventory,
+    ProductType,
+    Stock,
 )
 
 fake = Faker()
@@ -129,12 +132,8 @@ class ProductAttributeValuesFactory(factory.django.DjangoModelFactory):
 
 
 class ProductWithAttributeValuesFactory(ProductInventoryFactory):
-    attribute_values_1 = factory.RelatedFactory(
-        ProductAttributeValuesFactory, factory_related_name="product_inventory"
-    )
-    attribute_values_2 = factory.RelatedFactory(
-        ProductAttributeValuesFactory, factory_related_name="product_inventory"
-    )
+    attribute_values_1 = factory.RelatedFactory(ProductAttributeValuesFactory, factory_related_name="product_inventory")
+    attribute_values_2 = factory.RelatedFactory(ProductAttributeValuesFactory, factory_related_name="product_inventory")
 
 
 register(CategoryFactory)
