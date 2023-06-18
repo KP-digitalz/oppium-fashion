@@ -1,5 +1,6 @@
-from inventory.models import Category
 from rest_framework.serializers import ModelSerializer
+
+from inventory.models import Category
 
 
 class CategorySerializer(ModelSerializer):

@@ -1,13 +1,14 @@
 import pytest
 from django.db import IntegrityError
+
 from inventory.models import (
     Category,
-    Product,
-    ProductInventory,
     Media,
-    Stock,
+    Product,
     ProductAttribute,
     ProductAttributeValue,
+    ProductInventory,
+    Stock,
 )
 
 
@@ -317,9 +318,7 @@ def test_inventory_db_stock_insert_data(db, stock_factory):
         (1, "men-shoe-size", "men shoe size"),
     ],
 )
-def test_inventory_db_product_attribute_dataset(
-    db, db_fixture_setup, id, name, description
-):
+def test_inventory_db_product_attribute_dataset(db, db_fixture_setup, id, name, description):
     result = ProductAttribute.objects.get(id=id)
     assert result.name == name
     assert result.description == description
@@ -331,9 +330,7 @@ def test_inventory_db_product_attribute_insert_data(db, product_attribute_factor
     assert new_attribute.description == "description_0"
 
 
-def test_inventory_db_product_attribute_uniqueness_integrity(
-    db, product_attribute_factory
-):
+def test_inventory_db_product_attribute_uniqueness_integrity(db, product_attribute_factory):
     product_attribute_factory.create(name="not_unique")
     with pytest.raises(IntegrityError):
         product_attribute_factory.create(name="not_unique")
@@ -346,9 +343,7 @@ def test_inventory_db_product_attribute_uniqueness_integrity(
         (1, 1, 10),
     ],
 )
-def test_inventory_db_product_attribute_dataset(
-    db, db_fixture_setup, id, product_attribute, attribute_value
-):
+def test_inventory_db_product_attribute_dataset(db, db_fixture_setup, id, product_attribute, attribute_value):
     result = ProductAttributeValue.objects.get(id=1)
 
     assert result.product_attribute.id == 1
@@ -364,9 +359,7 @@ def test_inventory_db_product_attribute_value_data(db, product_attribute_value_f
     assert new_attribute_value.product_attribute.name == "new_value"
 
 
-def test_inventory_db_insert_inventory_product_values(
-    db, product_with_attribute_values_factory
-):
+def test_inventory_db_insert_inventory_product_values(db, product_with_attribute_values_factory):
     product_with_attribute_values_factory.create(sku="123456789")
     result = ProductInventory.objects.get(sku="123456789")
     counter = result.attribute_values.all().count()

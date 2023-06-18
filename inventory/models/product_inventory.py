@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from .product import Product
-from .product_type import ProductType
+
 from .brand import Brand
+from .product import Product
 from .product_attribute_value import ProductAttributeValue
+from .product_type import ProductType
 
 
 class ProductInventory(models.Model):
@@ -29,13 +30,9 @@ class ProductInventory(models.Model):
         help_text=_("format: required, unique, max-12"),
     )
 
-    product_type = models.ForeignKey(
-        ProductType, related_name="product_type", on_delete=models.PROTECT
-    )
+    product_type = models.ForeignKey(ProductType, related_name="product_type", on_delete=models.PROTECT)
 
-    product = models.ForeignKey(
-        Product, related_name="product", on_delete=models.PROTECT
-    )
+    product = models.ForeignKey(Product, related_name="product", on_delete=models.PROTECT)
 
     brand = models.ForeignKey(Brand, related_name="brand", on_delete=models.PROTECT)
 

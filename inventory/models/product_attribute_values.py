@@ -1,6 +1,7 @@
 from django.db import models
-from .product_inventory import ProductInventory
+
 from .product_attribute_value import ProductAttributeValue
+from .product_inventory import ProductInventory
 
 
 class ProductAttributeValues(models.Model):
