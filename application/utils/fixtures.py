@@ -1,4 +1,5 @@
 import pytest
+from decouple import config
 from django.core.management import call_command
 
 
@@ -8,7 +9,7 @@ def create_admin_user(django_user_model):
     Returns admin user
     """
     return django_user_model.objects.create_superuser(
-        "oppium", "oppium@test.test", "oppium"
+        config("FIXTURE_USER"), config("FIXTURE_EMAIL"), config("FIXTURE_PASSWORD")
     )
 
 
