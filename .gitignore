@@ -191,9 +191,6 @@ out/
 # VS Code
 .vscode
 
-# Selenium Web Driver
-chromedriver.exe
-
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
