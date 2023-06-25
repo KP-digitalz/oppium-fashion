@@ -20,7 +20,6 @@ INSTALLED_APPS = [
     "corsheaders",
     # Local applications
     "inventory",
-    "dashboard",
 ]
 
 
@@ -28,7 +27,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 
 ROOT_URLCONF = "application.urls"
-HOME_PAGE_VIEW = "oppium_fashion.views.IndexView"
+# HOME_PAGE_VIEW = "oppium_fashion.views.IndexView"
 
 WSGI_APPLICATION = "application.wsgi.application"
 ASGI_APPLICATION = "application.asgi.application"
